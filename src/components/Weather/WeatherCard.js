@@ -17,7 +17,9 @@ export default function WeatherCard() {
     setWeather(null);
 
     try {
-      const res = await fetch(`/api/weather?city=${city}`);
+      const res = await fetch(
+        `/api/weather?city=${encodeURIComponent(city.trim())}`
+      );
       const data = await res.json();
 
       if (!res.ok) {
